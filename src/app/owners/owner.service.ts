@@ -71,13 +71,13 @@ export class OwnerService {
   }
 
   private handleError(error: Response | any) {
-    console.log('handleError log: ');
+    console.log('Handling error');
     let errMsg: string;
     if (error instanceof Response) {
       if (!(error.text() === '' )) {  // if response body not empty
         const body = error.json() || '';
-        const err = body.error || JSON.stringify(body);
-        errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+        console.log(`${error.status} - ${error.statusText || ''} ${body.message}`);
+        errMsg = `${body.message}`;
       } else {
         console.log('binding errors header not empty');
         errMsg = error.headers.get('errors').toString();
