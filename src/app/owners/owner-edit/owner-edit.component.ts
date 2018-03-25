@@ -50,7 +50,7 @@ export class OwnerEditComponent implements OnInit {
     var that = this;
     this.ownerService.updateOwner(owner.id.toString(), owner).subscribe(
       get_result,
-      get_error
+      error => this.errorMessage = <any>error
     );
 
     function get_error(error) {
